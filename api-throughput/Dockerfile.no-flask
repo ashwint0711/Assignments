@@ -1,0 +1,7 @@
+FROM python:3.9-slim
+
+WORKDIR /add
+
+COPY ping-pong-no-flask.py /add/
+
+CMD ["python", "ping-pong-no-flask.py"]

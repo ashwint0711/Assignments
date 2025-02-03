@@ -1,0 +1,26 @@
+
+services:
+  flask-server:
+    build:
+      context: .
+      dockerfile: Dockerfile.flask
+    command: python ping-pong-flask.py
+    ports:
+      - "5000:5000"
+
+  no-flask-server:
+    build:
+      context: .
+      dockerfile: Dockerfile.no-flask
+    command: python ping-pong-no-flask.py
+    ports:
+      - 5001:5001
+
+  monitor:
+    build:
+      context: .
+      dockerfile: Dockerfile.monitor
+    depends_on:
+      - flask-server
+      - no-flask-server
+    command: python monitor.py  

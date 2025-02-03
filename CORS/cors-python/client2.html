@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>Python Server</title>
+        <script>
+            // JavaScript fetch method to call the server on port 3000
+
+            fetch('http://localhost:5000/api/data')
+                .then(response => response.text())  // Get response as text
+                .then(data => {
+                    console.log('Response from server:', data);
+                    // Putting "data" recieved from data-server into webpage
+                    document.getElementById('response').innerText = data;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+                
+        </script>
+    </head>
+    <body>
+        <h1>Sending direct Get request (No preflight)</h1>
+        <p>This Client is sending a GET request without custom headers.</p>
+        <p id="response">Waiting for response from server on port 5000...</p>
+    </body>
+    </html>

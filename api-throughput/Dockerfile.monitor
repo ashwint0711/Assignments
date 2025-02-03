@@ -1,0 +1,9 @@
+FROM python:3.9-slim
+
+WORKDIR /add
+
+COPY monitor.py /add/
+
+RUN pip install requests
+
+CMD ["python", "monitor.py"]
