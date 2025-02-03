@@ -84,3 +84,7 @@ Open: http://localhost:3000
  * Go to connections and Add new connection
  * Select prometheus
  * Give URL : http://localhost:9090 (From this URL grafana will scrape Metrics of our server)
+
+
+#### Checking Metrics through Grafana Dashboard
+The metric i've made is `total_http_requests`, so to check total number of HTTP requests, `prometheus_total_http_requests` query can be used inside Grafana, this will show total number of requests in a time series data format under the `table-view` section.
