@@ -36,7 +36,7 @@ Running the Client for Go data server
 
 ### Description
 In this assignment i ran two python servers one is `ping-pong-flask.py` and second one is `ping-pong-no-flask.py`, in this i aimed to see what difference it makes if we don't use Flask library for creating a server.
-I ran this two python servers in a docker container along with a middleware script also in another docker container, I sent 20-20 requests to both servers one after another, and logged their throughput on the container log such as:
+I ran these two python servers in a docker container along with a middleware script also in another docker container, I sent 20-20 requests to both servers one after another, and logged their throughput on the container log which includes:
 * Total requests
 * Successful responses
 * Failed responses
@@ -57,12 +57,12 @@ After running the `docker-compose` command the middleware script will make http 
 # Prometheus Monitoring
 ### Description
 
-Wrote a simple ping-pong server with `/metrics` endpoint open for scraping metrics from the server, to achieve this in python i used pythons built-in `prometheus_client` library, and the `Make_wsgi_app()` to open the `/metrics` endpoint and send metrics through that endpoint.
-I made a structure where python server script, Prometheus and Grafana, all are running in separate docker containers following the 'One Task Per container' approach of Docker.
-In this server I created a Counter metrics named 'http_requests_total', which will tell the total number of HTTP requests made to this server.
+Wrote a simple ping-pong server with `/metrics` endpoint open for scraping metrics from the server, to achieve this in python i used pythons built-in `prometheus_client` library, and the `Make_wsgi_app()` to open the `/metrics` endpoint from where prometheus's scraper will scrape metrics.</br>
+I followed a structure where `Python server`, `Prometheus` and `Grafana`, all are running in separate docker containers following the 'One Task Per container' approach of Docker.</br>
+In this server I created a metrics named `http_requests_total` using the `Counter` class provided by `prometheus_client` library, which will tell the total number of HTTP requests made to this server.
 
 ### Installation & Steup
-#### Start Server, Prometheus and Grafana in Docker
+#### Start Python Server, Prometheus and Grafana in Docker
 > cd prometheus-monitoring
 
 > docker build -t prom-testing-image .
